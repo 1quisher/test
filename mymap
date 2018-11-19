@@ -1,0 +1,134 @@
+import com.google.common.primitives.UnsignedInteger
+import com.google.common.primitives.UnsignedInts
+import io.kotlintest.matchers.collections.haveElementAt
+import io.kotlintest.matchers.collections.shouldContain
+import io.kotlintest.matchers.numerics.shouldBeLessThan
+import io.kotlintest.shouldBe
+import io.kotlintest.specs.DescribeSpec
+import com.univocity.parsers.common.ArgumentUtils.toCharArray
+import com.univocity.parsers.common.ArgumentUtils.toCharArray
+import com.univocity.parsers.common.ArgumentUtils.toCharArray
+import io.kotlintest.matchers.string.shouldContainOnlyDigits
+import io.kotlintest.shouldNotHave
+import com.sun.imageio.plugins.common.ImageUtil.isBinary
+import io.kotlintest.forAny
+import java.math.BigInteger
+import java.util.Arrays
+import java.util.HashSet
+import java.util.HashMap
+import java.util.ArrayList
+
+
+
+
+
+
+class BasicsSpec : DescribeSpec({
+    describe("checking BInary functions") {
+        var a:UnsignedInts
+        var b:UnsignedInteger
+
+        context("проверка на ошибки ") {
+
+            it("it should be false") {
+
+            }
+        }
+
+
+        context("Проверка функции  ") {
+
+
+            it("need to get out error") {
+
+            }
+        }
+        context("Проверка работы с цифрами ") {
+
+
+            it("need to get out error") {
+
+            }
+        }
+
+        context("Проверка работы цифор на уникальность ") {
+
+            it("need to get out error") {
+
+
+            }
+        }
+        context("Проверка работы с цифрами ") {
+
+            it("need to get out a sum") {
+
+            }
+        }
+
+    }
+})
+
+
+
+interface MyMap {
+    fun put(key: Any, value: Any)
+    operator fun get(key: Any): Any
+    fun size(): Int
+    fun keySet(): Set<*>
+    fun entrySet(): Set<*>
+    interface MyEntry {
+        val key: Any
+        val value: Any
+    }
+}
+internal class SimpleMap : MyMap {
+    private val keys: ArrayList<*>
+    private val values: ArrayList<*>
+    private var index: Int = 0
+
+    init{
+        keys = ArrayList<Any>()
+        values = ArrayList<Any>()
+        index = 0
+    }
+
+    override fun put(key: Any, value: Any) {
+        keys.add(key)
+        values.add(value)
+        index++
+    }
+
+    override operator fun get(key: Any): {
+        val i = keys.indexOf(key)
+        return if (i >= 0)
+            values[i]
+        else
+            null
+    }
+
+    override fun size(): Int {
+        return index
+    }
+
+    override fun keySet(): Set<*> {
+        val set = HashSet()
+        set.addAll(keys)
+        return set
+    }
+
+    internal inner class MySimpleEntry(var key: Any, var value: Any) : MyMap.MyEntry
+
+    override fun entrySet(): Set<*> {
+        val set = HashSet<>()
+        for (i in 0 until index) {
+            val k = keys[i]
+            val v = values[i]
+            val temp = MySimpleEntry(k, v)
+            set.add(temp)
+        }
+        return set
+    }
+}
+
+
+
